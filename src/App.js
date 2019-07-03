@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
+
+import Formulario from './components/Formulario';
 
 function App() {
   // useState retorna 2 funciones el state y la funcion q actualiza el state
@@ -18,7 +20,15 @@ function App() {
   console.log(citas);
 
   return(
-    <h1>Hola</h1>
+    <Fragment>
+      <h1>Administrador de Pacientes</h1>
+      <div className="container">
+        <div className="one-half column">
+          <Formulario />
+        </div>
+        <div className="one-half column"></div>
+      </div>
+    </Fragment>
   )
 
 }
