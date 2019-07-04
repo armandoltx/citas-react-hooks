@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from "react";
 
 import Formulario from './components/Formulario';
+import Cita from './components/Cita';
 
 function App() {
   // useState retorna 2 funciones el state y la funcion q actualiza el state
@@ -38,7 +39,15 @@ function App() {
         <div className="one-half column">
           <Formulario crearCita={crearCita} />
         </div>
-        <div className="one-half column"></div>
+        <div className="one-half column">
+          {citas.map((cita, index) => (
+            <Cita
+              key={index}
+              index={index}
+              cita={cita}
+            />
+          ))}
+        </div>
       </div>
     </Fragment>
   )

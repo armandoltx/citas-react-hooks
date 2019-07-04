@@ -8,6 +8,7 @@ function Formulario({crearCita}) {
   const [cita, actualizarCita] = useState({
     mascota: '',
     propietario: '',
+    telefono: '',
     fecha: '',
     hora: '',
     sintomas: '',
@@ -57,6 +58,15 @@ function Formulario({crearCita}) {
           onChange={actualizarState}
         />
 
+        <label>Telefono</label>
+        <input
+          type="number"
+          name="telefono"
+          className="u-full-width"
+          placeholder="Telefono"
+          onChange={actualizarState}
+        />
+
         <label htmlFor="">Fecha</label>
         <input
           type="date"
@@ -75,7 +85,7 @@ function Formulario({crearCita}) {
 
         <label htmlFor=""></label>
           <textarea
-            name="sitomas"
+            name="sintomas"
             className="u-full-width"
             onChange={actualizarState}
           ></textarea>
