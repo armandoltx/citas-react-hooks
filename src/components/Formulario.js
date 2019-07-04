@@ -49,6 +49,7 @@ function Formulario () {
           name="propietario"
           className="u-full-width"
           placeholder="Nombre del dueño de la Mascota"
+          onChange={actualizarState}
         />
 
         <label htmlFor="">Fecha</label>
@@ -56,6 +57,7 @@ function Formulario () {
           type="date"
           name="fecha"
           className="u-full-width"
+          onChange={actualizarState}
         />
 
         <label htmlFor="">Hora</label>
@@ -63,11 +65,14 @@ function Formulario () {
           type="time"
           name="hora"
           className="u-full-width"
+          onChange={actualizarState}
         />
+
         <label htmlFor=""></label>
           <textarea
             name="sitomas"
             className="u-full-width"
+            onChange={actualizarState}
           ></textarea>
 
         <button type="submit" className="button-primary u-full-width">Agregar</button>
