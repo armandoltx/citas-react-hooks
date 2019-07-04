@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 
 
-function Formulario () {
+function Formulario({crearCita}) {
 
   // añadimos el state, el 1 es el state(cita), el 2 es q va actualizar el state (actualizarCita) y dento de los parentesis son los valores iniciales dentro del {}
   // para acceder a los valores del formulario antes usabamos ref, ahora usamos la propiedad name del input
@@ -14,12 +14,6 @@ function Formulario () {
   })
 
   const actualizarState = (e) => {
-    // 1. Prevenir default para q no se recargue
-    // 2. Crear el Objeto con los datos
-    // 3. Agregarlo y enviarlo por props hacia el padre para actualizar el state
-    // 4. Resetear el formulario
-    // 5. Elimine el error
-
     // actualizar el state con los nuevos datos del formulario
     // primero hacemos copia del state, para q cuando escribamos no nos borre los otros campos
     // con [e.target.name] accedemos al name en cada input
@@ -29,11 +23,22 @@ function Formulario () {
     })
   }
 
-  console.log(cita);
+  // console.log(cita);
+
+  const enviarCita = (e) => {
+    // prevenir el comportamiento default y quedarnos en el form
+    e.preventDefault();
+    // pasar hacia el componente principal la cita (el state) para ellos usamos la funcion q hemos declarado en el componente padre para agregar las nuevas citas al state
+    crearCita(cita);
+    // console.log(cita)
+
+    // reiniciar el state (reiniciar el form)
+
+  }
 
   return (
     <Fragment>
-      <form>
+      <form onSubmit={enviarCita}>
         <label>Nombre de la Mascota</label>
         <input
           type="text"
