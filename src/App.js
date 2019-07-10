@@ -32,6 +32,13 @@ function App() {
     guardarCita(nuevasCitas);
   }
 
+  // Elimina las citas del State
+  const eliminarCita = (index) => {
+    const nuevasCitas = [...citas]; // hacemos copia del state
+    nuevasCitas.splice(index, 1);   // eliminar un elemento de un arreglo coje 2 parametros, 1 q elemento quieres eliminar cuantos elementos a partir de el quieres eliminar, en nuestro caso 1
+    guardarCita(nuevasCitas); // actualizamos el state
+  }
+
   return(
     <Fragment>
       <h1>Administrador de Pacientes</h1>
@@ -45,6 +52,7 @@ function App() {
               key={index}
               index={index}
               cita={cita}
+              eliminarCita={eliminarCita}
             />
           ))}
         </div>
