@@ -3,17 +3,22 @@ import React, { useState, Fragment } from 'react';
 
 function Formulario({crearCita}) {
 
-  // añadimos el state, el 1 es el state(cita), el 2 es q va actualizar el state (actualizarCita) y dento de los parentesis son los valores iniciales dentro del {}
-  // para acceder a los valores del formulario antes usabamos ref, ahora usamos la propiedad name del input
-  const [cita, actualizarCita] = useState({
+  const stateInicial ={
     mascota: '',
     propietario: '',
     telefono: '',
     fecha: '',
     hora: '',
     sintomas: '',
-  })
+  }
 
+  // añadimos el state, el 1 es el state(cita), el 2 es q va actualizar el state (actualizarCita) y dento de los parentesis son los valores iniciales dentro del {}
+  // para acceder a los valores del formulario antes usabamos ref, ahora usamos la propiedad name del input
+  // cita = state actual
+  // actualizarCita = fn para cambiar el state
+  const [cita, actualizarCita] = useState(stateInicial)
+
+  // actualiza el state
   const actualizarState = (e) => {
     // actualizar el state con los nuevos datos del formulario
     // primero hacemos copia del state, para q cuando escribamos no nos borre los otros campos
@@ -26,6 +31,7 @@ function Formulario({crearCita}) {
 
   // console.log(cita);
 
+  // pasamos la cita al componente principal
   const enviarCita = (e) => {
     // prevenir el comportamiento default y quedarnos en el form
     e.preventDefault();
@@ -34,6 +40,7 @@ function Formulario({crearCita}) {
     // console.log(cita)
 
     // reiniciar el state (reiniciar el form)
+    actualizarCita(stateInicial);
 
   }
 
@@ -47,6 +54,7 @@ function Formulario({crearCita}) {
           className="u-full-width"
           placeholder="Nombre de la Mascota"
           onChange={actualizarState}
+          value={cita.mascota}
         />
 
         <label>Nombre del Dueño</label>
@@ -56,6 +64,7 @@ function Formulario({crearCita}) {
           className="u-full-width"
           placeholder="Nombre del dueño de la Mascota"
           onChange={actualizarState}
+          value={cita.propietario}
         />
 
         <label>Telefono</label>
@@ -65,6 +74,7 @@ function Formulario({crearCita}) {
           className="u-full-width"
           placeholder="Telefono"
           onChange={actualizarState}
+          value={cita.telefono}
         />
 
         <label htmlFor="">Fecha</label>
@@ -73,6 +83,7 @@ function Formulario({crearCita}) {
           name="fecha"
           className="u-full-width"
           onChange={actualizarState}
+          value={cita.fecha}
         />
 
         <label htmlFor="">Hora</label>
@@ -81,6 +92,7 @@ function Formulario({crearCita}) {
           name="hora"
           className="u-full-width"
           onChange={actualizarState}
+          value={cita.hora}
         />
 
         <label htmlFor=""></label>
@@ -88,6 +100,7 @@ function Formulario({crearCita}) {
             name="sintomas"
             className="u-full-width"
             onChange={actualizarState}
+          value={cita.sintomas}
           ></textarea>
 
         <button type="submit" className="button-primary u-full-width">Agregar</button>
